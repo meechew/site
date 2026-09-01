@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colorful River Holdings</title>
+<meta name="description" content="We build software that transforms everyday screen time into moments of calm, comfort, and quiet connection.">
+<meta property="og:title" content="Colorful River Holdings">
+<meta property="og:description" content="We build software that transforms everyday screen time into moments of calm, comfort, and quiet connection.">
+<meta property="og:image" content="https://colorfulriverholdings.online/assets/banner-1500x500.png">
+<link rel="icon" href="assets/profile-400.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Chakra+Petch:ital,wght@0,400;0,500;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blacklight: #0B0714;   /* the only ground */
+    --ghost: #EDE8F7;        /* body text */
+    --pine: #22E893;         /* the name; terminal text */
+    --pine-far: #14A86B;
+    --hot: #FF2E88;          /* primary tube — actions */
+    --river: #00E5FF;        /* links, live information */
+    --violet: #A855F7;       /* heading glow */
+    --sodium: #FF7A1A;
+    --dawn: #FFD54F;
+    --line: rgba(168, 85, 247, 0.22);
+    --panel: rgba(237, 232, 247, 0.03);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--blacklight);
+    color: var(--ghost);
+    font-family: "Chakra Petch", system-ui, sans-serif;
+    line-height: 1.65;
+  }
+  /* Page scanline texture (brand: 0.5 opacity overlay). The mark escapes it —
+     its scanlines are baked into the artwork. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.24) 0 1px, transparent 1px 3px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .above-scan { position: relative; z-index: 6; }
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .lockup { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .lockup img { width: 42px; height: 42px; display: block; }
+  .name {
+    font-family: "VT323", monospace;
+    font-size: 1.7rem;
+    letter-spacing: 0.02em;
+    color: var(--pine);
+    text-shadow: 0 0 7px rgba(34,232,147,.85), 0 0 26px rgba(34,232,147,.45), 0 0 72px rgba(34,232,147,.25);
+    white-space: nowrap;
+  }
+  nav { display: flex; flex-wrap: wrap; }
+  nav a {
+    color: var(--river);
+    text-decoration: none;
+    margin-left: 1.25rem;
+    font-family: "VT323", monospace;
+    font-size: 1.15rem;
+  }
+  nav a:hover { text-shadow: 0 0 10px rgba(0,229,255,0.7); }
+  main { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+  .hero { padding: 4.5rem 0 3rem; text-align: center; }
+  .hero h1 {
+    font-family: "Tilt Neon", sans-serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    color: var(--ghost);
+    text-shadow: 0 0 9px rgba(168,85,247,.85), 0 0 34px rgba(168,85,247,.45);
+    line-height: 1.15;
+  }
+  .hero p.tag {
+    color: var(--ghost);
+    max-width: 40rem;
+    margin: 1.5rem auto 0;
+    font-size: 1.15rem;
+  }
+  .skyline {
+    height: 2px;
+    max-width: 22rem;
+    margin: 2.25rem auto 0;
+    background: linear-gradient(90deg, #12061F, #7C3AED 26%, #FF2E88 55%, #FF7A1A 80%, #FFD54F);
+    border-radius: 1px;
+  }
+  section { padding: 3rem 0; border-top: 1px solid var(--line); }
+  .kicker {
+    font-family: "VT323", monospace;
+    font-size: 1.1rem;
+    color: var(--pine);
+    letter-spacing: 0.08em;
+  }
+  h2 {
+    font-family: "Tilt Neon", sans-serif;
+    font-size: 1.9rem;
+    color: var(--ghost);
+    text-shadow: 0 0 8px rgba(168,85,247,.8), 0 0 30px rgba(168,85,247,.4);
+    margin: 0.2rem 0 1.2rem;
+  }
+  .app-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .app-card img { max-width: 100%; border-radius: 8px; display: block; }
+  .app-card h3 {
+    font-family: "VT323", monospace;
+    font-size: 1.9rem;
+    color: var(--pine);
+    text-shadow: 0 0 7px rgba(34,232,147,.85), 0 0 26px rgba(34,232,147,.45);
+  }
+  .app-card p { margin-top: 0.75rem; }
+  .app-card .platforms {
+    margin-top: 1rem;
+    color: var(--pine-far);
+    font-family: "VT323", monospace;
+    font-size: 1.05rem;
+  }
+  .btn-row { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    font-family: "VT323", monospace;
+    font-size: 1.2rem;
+    color: var(--hot);
+    border: 1px solid var(--hot);
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(255,46,136,0.6);
+    box-shadow: 0 0 12px rgba(255,46,136,0.15), inset 0 0 12px rgba(255,46,136,0.08);
+  }
+  .btn:hover { background: rgba(255,46,136,0.1); }
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; border-radius: 8px; border: 1px solid var(--line); display: block; }
+  .shots figcaption {
+    color: var(--pine-far);
+    font-family: "VT323", monospace;
+    font-size: 1rem;
+    margin-top: 0.4rem;
+    text-align: center;
+  }
+  ul.features { list-style: none; margin-top: 1rem; }
+  ul.features li { padding-left: 1.4rem; position: relative; margin-bottom: 0.6rem; }
+  ul.features li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--pine);
+    font-family: "VT323", monospace;
+  }
+  .contact a { color: var(--river); text-decoration: none; }
+  .contact a:hover { text-shadow: 0 0 10px rgba(0,229,255,0.7); }
+  footer {
+    border-top: 1px solid var(--line);
+    color: rgba(237, 232, 247, 0.55);
+    font-size: 0.85rem;
+    padding: 2rem 1.5rem 3rem;
+    text-align: center;
+  }
+  footer a { color: var(--river); }
+  @media (max-width: 760px) {
+    .app-card { grid-template-columns: 1fr; }
+    header { flex-direction: column; }
+    nav a { margin: 0 0.6rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="lockup" href="index.html">
+    <img class="above-scan" src="assets/mark.svg" alt="Colorful River mark — a neon river valley at first light">
+    <span class="name">Colorful River&#9646;</span>
+  </a>
+  <nav>
+    <a href="#apps">Apps</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+<main>
+  <div class="hero">
+    <h1>Cozy retro software<br>for your living room.</h1>
+    <p class="tag">We build software that transforms everyday screen time into moments of calm, comfort, and quiet connection.</p>
+    <div class="skyline"></div>
+  </div>
+
+  <section id="apps">
+    <div class="kicker">&gt; OUR APPS</div>
+    <h2>What we make</h2>
+    <div class="app-card">
+      <div>
+        <h3>Fireside Terminal</h3>
+        <p>A crackling holiday fireplace for your TV, rendered entirely in living ASCII art — like a fireplace channel broadcast from 1986. Every flame is computed in real time by a heat-diffusion fire simulation; thirty-two public-domain Christmas carols are performed live on an emulated 8-bit sound chip. The fire never repeats, and the whole app runs completely offline.</p>
+        <ul class="features">
+          <li>Real-time ASCII fire simulation — no video loops</li>
+          <li>32 carols synthesized live, chiptune style</li>
+          <li>Stoke the fire: adjust oxygen and fuel</li>
+          <li>Terminal color themes and a CRT effect</li>
+          <li>No network, no ads, no accounts, no data collection</li>
+        </ul>
+        <p class="platforms">Amazon Fire TV &middot; Google TV / Android TV &middot; LG webOS &middot; Samsung Tizen &middot; more on the way</p>
+        <div class="btn-row">
+          <a class="btn" href="https://firesideterminal.online">&gt; firesideterminal.online</a>
+          <a class="btn" href="https://www.amazon.com/dp/B0HGH7CNM4/">&gt; Get it on Amazon</a>
+        </div>
+      </div>
+      <div>
+        <img src="assets/feature-graphic-1024x500.png" alt="Fireside Terminal — ASCII fireplace art">
+      </div>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="assets/fire-default.png" alt="Default orange ASCII fire theme">
+        <figcaption>DEFAULT — the timeless orange blaze</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/palette-classic.png" alt="Classic terminal-white fire theme">
+        <figcaption>CLASSIC — terminal white</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/palette-bw.png" alt="Black and white fire theme">
+        <figcaption>B/W — stark monochrome</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/premium-preview.png" alt="Premium Pack BIOS-style preview dialog">
+        <figcaption>PREMIUM PACK — retro BIOS preview</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="kicker">&gt; ABOUT</div>
+    <h2>The valley after dark</h2>
+    <p>Colorful River is an independent software studio — the publisher of Fireside Terminal. We like software that feels handmade: simulations instead of video files, synthesizers instead of recordings, and apps that respect your privacy by never phoning home. Our current focus is bringing Fireside Terminal to every TV platform with a store.</p>
+    <p style="margin-top:0.75rem">Colorful River Holdings is the legal entity behind the studio and the seller of record for our apps.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="kicker">&gt; CONTACT</div>
+    <h2>Get in touch</h2>
+    <p>Questions, support, or business inquiries:<br>
+    <a href="mailto:contact@colorfulriverholdings.online">contact@colorfulriverholdings.online</a></p>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2026 Colorful River Holdings. All rights reserved. &middot; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>
